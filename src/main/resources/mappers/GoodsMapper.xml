@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--파일이 종류가 mybatis용-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//
+              EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--mybatis를 사용할 DAO패키지를 지정-->
+
+<mapper namespace="com.inssa.goods.DAO.GoodsDAO">
+    <!--회원용 목록, 관리자 목록-->
+    <select id="selectAllGoods" resultType="GoodsVO">
+                <![CDATA[
+        SELECT * FROM goods_tbl
+        ]]>
+        </select>
+    <!--상품등록(관리자)-->
+    <insert id="insertGoods">
+            <![CDATA[
+        INSERT INTO goods_tbl(ggoods,gcontent,gprice,gquan,gimg)
+        VALUES (#{ggoods},#{gcontent},#{gprice},#{gquan},#{gimg})
+        ]]>
+        </insert>
+    <!--개별 목록(상세페이지 ,수정)-->
+    <select id="selectUpdate" resultType="GoodsVO"><!-- 수정할 해당번의자료를 읽어온다-->
+        <![CDATA[
+        select  * from goods_tbl where gno=#{gno}
+        ]]>
+    </select>
+
+    <!--상품수정(관리자)-->
+    <update id="updateGoods">
+            <![CDATA[
+        UPDATE goods_tbl SET gno=#{gno}, ggoods=#{ggoods},gcontent=#{gcontent},
+                             gprice=#{gprice}, gquan=#{gquan},gimg=#{gimg} WHERE gno = #{gno}
+        ]]>
+        </update>
+    <!--상품삭제(관리자)-->
+    <delete id="deleteGoods">
+        <![CDATA[
+        DELETE FROM goods_tbl WHERE gno=#{gno}
+        ]]>
+    </delete>
+
+
+
+    
+</mapper>
