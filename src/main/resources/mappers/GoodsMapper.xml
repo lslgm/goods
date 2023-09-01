@@ -29,7 +29,7 @@
     <update id="updateGoods">
             <![CDATA[
         UPDATE goods_tbl SET gno=#{gno}, ggoods=#{ggoods},gcontent=#{gcontent},
-                             gprice=#{gprice}, gquan=#{gquan} WHERE gno = #{gno}
+                             gprice=#{gprice}, gquan=#{gquan},gimg=#{gimg} WHERE gno = #{gno}
         ]]>
         </update>
     <!--상품삭제(관리자)-->

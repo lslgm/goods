@@ -25,7 +25,7 @@
 <div class="row">
     <div class="col-sm-3"></div><!--여백-->
     <div class="col-sm-6">
-        <form action="/goods-update" method="post" >
+        <form action="/goods-update" method="post" enctype="multipart/form-data">
             <!--데이터베이스의 필드명 참조-->
             <div class="mb-3 mt-3">
                 <label for="gno" class="form-label">상품 번호</label>
@@ -52,8 +52,9 @@
             </div>
 
             <div class="mb-3 mt-3">
-                <label for="gimg" class="form-label">상품 이미지</label>
-                <img src="/images/${list.gimg}" id="gimg"  name="gimg" width="200" height="200" alt="없음" >
+                <<label for="file" class="form-label">상품 이미지</label>
+                <input type="file" class="form-control" id="file"  name="file">
+                <img src="/images/${list.gimg}" width="200" height="200" alt="없음" >
 
             </div>
             <div class="btn-group">

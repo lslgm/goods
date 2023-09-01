@@ -96,7 +96,18 @@ public class GoodsController {
     }
 
     @PostMapping("/goods-update")
-    public ModelAndView postgoodsUpdate(@ModelAttribute("GoodsVO") GoodsVO goodsVO,HttpServletResponse response) throws Exception {
+    public ModelAndView postgoodsUpdate(@ModelAttribute("GoodsVO") GoodsVO goodsVO, @RequestParam("file") MultipartFile file,HttpServletRequest request,HttpServletResponse response) throws Exception {
+
+        String fileName = file.getOriginalFilename();//파일의 위치 및 이름정보를 읽어 온다
+        String filePath = request.getSession().getServletContext().getRealPath("/images/"); //서버에서 webapp의 위치+images폴더를 추가해서 저장
+
+        try {
+            file.transferTo(new File(filePath+fileName));
+            goodsVO.setGimg(fileName);
+            //System.out.println("이미지를 업로드 성공");
+        } catch (IllegalStateException| IOException e){ //상태및 파일저장 오류
+            e.printStackTrace();
+        }
 
         goodsService.updateGoods(goodsVO);
         ModelAndView mav = new ModelAndView("redirect:/goods-list2");
