@@ -53,7 +53,8 @@
 
             <div class="mb-3 mt-3">
                 <label for="gimg" class="form-label">상품 이미지</label>
-                <input type="text" class="form-control" id="gimg"  name="gimg" value="${list.gimg}" readonly>
+                <img src="/images/${list.gimg}" id="gimg"  name="gimg" width="200" height="200" alt="없음" >
+
             </div>
             <div class="btn-group">
                 <button type="submit" class="btn btn-success">수정</button>

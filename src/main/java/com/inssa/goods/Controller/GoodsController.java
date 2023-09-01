@@ -88,6 +88,7 @@ public class GoodsController {
     //수정
     @GetMapping("/goods-update")
     public ModelAndView getgoodsUpdate(@RequestParam("gno") int gno, HttpServletResponse response) throws Exception {
+
         GoodsVO list = goodsService.selectUpdate(gno);
         ModelAndView mav = new ModelAndView("/goods/update");
         mav.addObject("list",list);
@@ -95,7 +96,8 @@ public class GoodsController {
     }
 
     @PostMapping("/goods-update")
-    public ModelAndView postgoodsUpdate(@ModelAttribute("GoodsVO") GoodsVO goodsVO, HttpServletResponse response) throws Exception {
+    public ModelAndView postgoodsUpdate(@ModelAttribute("GoodsVO") GoodsVO goodsVO,HttpServletResponse response) throws Exception {
+
         goodsService.updateGoods(goodsVO);
         ModelAndView mav = new ModelAndView("redirect:/goods-list2");
         return mav;
